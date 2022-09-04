@@ -10,7 +10,7 @@ START = datetime.now() - relativedelta(years=10)
 START = START.strftime("%Y-%m-%d")
 TODAY = datetime.today().strftime("%Y-%m-%d")
 
-st.title("Grier's Stock Prediciton")
+st.title("Grier's Stock Prediction")
 
 stocks = ("AAPL","GOOG","MSFT","GME","DKNG")
 selected_stock = st.selectbox("Select TICKR for Prediction", stocks)
@@ -49,7 +49,6 @@ forecast = m.predict(future)
 
 st.subheader("Forecast Data")
 st.write(forecast[["ds", "yhat"]].rename(columns = {"ds":"Date", "yhat":"Predicted Value"}).set_index("Date").tail(n_years))
-
 st.write("Forecast Data: {}".format(selected_stock))
 fig1 = plot_plotly(m, forecast)
 st.plotly_chart(fig1)
